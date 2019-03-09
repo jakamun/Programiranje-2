@@ -1,0 +1,49 @@
+﻿v pythonu datoteke odpremo s funkcijo open('dat')
+funkcija dat.read(n) prebere(izpise) prvih n znakov v datoteki read si zapomni kaj je nazadje prebral, če ga večkrat uporabiš
+dat.readline() prebere vrstico v tekstovni datoteki in na koncu doda znak za novo vrstico(\n); dat.readlines() nam vrne seznam vseh vrstic
+z zanko for se lahko vozmo po vrsticah datoteke npr.:
+for vrstica in dat:
+	print(len(vrstica), vrstica) # če hočemo zapisati v točno določeno datoteko dodamo še dodaten argument file=datoteka_v_katero_zelimo_pisati
+
+po uporabi se datoteko zapre z funkcijo dat.close()
+
+vendar ker se to skoz pozablja python dopusca naslednje:
+with open('datoteka') as dat:
+	delamo kar rabmo nardit, ko se to zakljuci python sam zapre datoteko
+
+funkciji open lahko podamo se neodvezen argument encoding='utf-8' s katerim podamo v kakšnem zapisu je datoteka (wordovi dokumenti ali so v 'cp1250' ali pa 'latin2')
+
+doteko lahko odpremo za pisanje in sicer: with open(..., 'w') as d: ( z 'w' smo povedal pythonu da želimo pisat v datoteko)
+kdaj imaš lahko problem da ti python izpiše prazne vrstice to preprečiš tako da dodaš dotaten argument newline='' , lahko uporabiš tudi namesto 'w' daš 'wb' vendar ne deluje na vseh metodah pisanja datoteke
+če odpremo datoteko, ki ne obstaja se python pritož če pa jo odpremo za pisanje pa ustvar novo datoteko
+v datoteko pišemo z funkcijo dat.write('neko besedilo') treba je zapret datoteko, da se vidi naše delo
+
+lahko tudi z funkcijo print('besedilo', file=datoteka) z drugim argumentom smo mu povedal kam naj izpiše besedilo
+
+vedno ko odpremo datoteko za pisanje povozimo tisto, kar je bilo če od prej notri shranjeno
+ta problem rešimo tako da funkciji open damo argument 'a'(append) namesto 'w'(write) 
+
+Absolutna pot do datoteke je celotna pot do datoteke katero želimo:
+				- /uvp/praktikum/vhodna.txt (na mac-ih ali linux-ih)
+				- C:\\uvp\prktikum\vhodna.txt (na windowsih)
+
+relativna pot je pot od tam kjer smo do datoteke katero želimo
+torej če sm v neki mapi dostopam do datoteke, ki je v tej mapi tako da samo ime te datoteke napisem
+imamo relativno pot .(pika) ki pomeni imenik(oz. mapa v kateri se nahajamo) in ..(dve piki) ki pomenita starsevski imenik(oz. v kateri mapi se ta mapa nahaja)(oz. dve piki pomenta pejt gor)
+ubistvu nas pikca postav v trenutni imenik dve pikci pa en file gor
+torej če se želim vn iz mape prestavt napišem dve piki (npr: ..\ )
+
+v pythonu je tako da nas on prestavi v tisto mapo iz katere smo pognali program
+ za delo s potmi imamo knjižnico os:
+		- os.getcwd()  # get curent working directory
+		- os.chdir('Documents/uvp') # nas prestav v mapo v katero smo napisal
+		- os.chdir('..') # s tem smo ga eno mapo višje prestavl
+		- os.listdir() # nam da seznam vseh objektov ki jih imamo v imeniku(torej trenutni file v katerem se nahajamo)
+		- os.path.splitext('neka/pot/file.txt') # ki vrne nabor v katerem je na prvem mestu pot do file vkljucno z filom brez koncnice, na drugem mestu pa je koncnica)
+		- os.path.split('neka/pot/file.txt') # ki vrne isto zgoraj samo da ti cel ime datoteke vrne na drugem mestu
+		- os.path.dirname(pot) # vrne ime directory od poti
+		- os.path.isdir(datoteka) # vrne True če je to neka mapa(da ni file) če ne False
+		- os.path.join(imenik, delna_pot) # zdruzi dve poti skupaj
+		- os.rename(stara_datoteka, nova_datoteka) # staro datotetko preimenuje z novo datoteko
+		- os.makedirs('mapa', exist_ok=False) # ustvari mapo tam kjer se trenutno nahajamo če podamo absolutno pot se ustvari tam kjer smo napisal, drugi neobvezen argument je da ne naredi mape če že obstaja
+		- 
