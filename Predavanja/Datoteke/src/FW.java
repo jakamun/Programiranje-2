@@ -13,8 +13,8 @@ public class FW {
 		
 	    // v javi izjeme lovimo tako da reèemo try neki in potem catch in neka izjema teh catchov damoo lahko veè
 		try {
-			in = new FileReader("/src/datoteke_python.txt");
-			out = new FileWriter("/src/outputFile.txt");	
+			in = new FileReader("src/datoteke_python.txt");
+			out = new FileWriter("src/outputFile.txt");	
 			
 			int c;
 			boolean space = false;
