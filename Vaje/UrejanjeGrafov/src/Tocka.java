@@ -5,6 +5,8 @@ public class Tocka {
 	
 	String ime;
 	
+	double x, y;
+	
 	Set<Tocka> sosedi; // tip sosedov je tocka, z Set smo ustvarili množico toèk
 	
 	// isto kot smo vedno nardil najprej prazen seznam, in potem not dodajal tocke itd.
@@ -17,7 +19,8 @@ public class Tocka {
 		sosedi = new HashSet<Tocka> (); // to je klic konstruktorja
 		//Set ni razred je le vmesnik, zato novega objekta Set ne moremo naredit,rabimo implementacijo vmesnika
 		//--> HashSet
-		//tudi lahko: this.sosedi, èe nimamo 2 isti imeni, raje ne uporabljamo 
+		//tudi lahko: this.sosedi, èe nimamo 2 isti imeni, raje ne uporabljamo
+		x = y = 0;
 	}
 	
 	// imamo pa še dve metodi

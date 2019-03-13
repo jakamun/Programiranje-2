@@ -21,5 +21,14 @@ public class Test {
 		
 		Graf poln = Graf.poln(5);
 		poln.izpis();
+		
+		Okno okno = new Okno();
+		okno.pack();
+		okno.setVisible(true); // naredimo okno vidno
+		graf.razporedi(300, 300, 200);
+		okno.platno.narisi(graf); // okno je objekt ki vsebuje platno ki ima metodo narisi
+		
+		
+		
 	}
 }

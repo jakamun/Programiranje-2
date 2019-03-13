@@ -5,6 +5,7 @@ public class Graf {
 	// kako je graf povezan zvemo iz komponent tock, "sosedov"
 	
 	int stevec;
+	
 	Map<String, Tocka> tocke; // Map pomeni slovar, kjer je kot kljuc string in vrednost neka tocka grafa
 	
 	public Graf () {// konstruktor ki ustvari prazen graf
@@ -117,13 +118,22 @@ public class Graf {
 		}
 	}
 	
-	public boolean povezan() {
+	public boolean povezan() { // to ni prov
 		for (Tocka i : tocke.values()) {
 			if (i.stopnja() == 0) return false; // èe je stopnja enaka 0 potem je ta toèka izolirana in graf ni povezan
 		}
 		return true;
 	}
 	
-	
+	public void razporedi(double x, double y, double r) {
+		int n = tocke.size(); // število toèk
+		int i = 0; // z i hodimo po vseh tockah
+		for (Tocka v : tocke.values()) { // èe seznam prazen se for zanka ne izvede
+			double kot = (2*i*Math.PI)/n; // da enakomerno razporedimo morjo bit koti skoz enaki
+			v.x = x + r*Math.cos(kot); // vsaki toèki bomo posebaj doloèili x in y komponento tako da bojo enakomerno razporejene
+			v.y = y + r*Math.sin(kot);
+			++i;
+		}
+	}
 	
 }
